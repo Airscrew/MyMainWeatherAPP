@@ -90,6 +90,215 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/wind_speed"
         android:layout_centerHorizontal="true"
-        android:text="Button" />
+        android:text="Button"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/wind_speed"
+        android:layout_marginTop="12sp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#4a90e2" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider2">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:id="@+id/timerow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:id="@+id/timerow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/timerow12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/icoweatherrow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:id="@+id/temprow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:id="@+id/temprow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/temprow12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAlignment="center"/>
+            </TableRow>
+
+        </TableLayout>
+    </HorizontalScrollView>
 
 </RelativeLayout>
