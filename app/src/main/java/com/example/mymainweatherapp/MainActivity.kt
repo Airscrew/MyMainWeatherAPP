@@ -3,6 +3,8 @@ package com.example.mymainweatherapp
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils.substring
@@ -11,29 +13,25 @@ import org.jetbrains.anko.doAsync
 import java.net.URL
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.find
+import org.json.JSONArray
 import org.json.JSONObject
+import java.io.IOException
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-
-
-
-
-
-
-
-
-
-
-
-
 
     private lateinit var button: Button
     private var curr_city: TextView? = null
@@ -94,7 +92,13 @@ class MainActivity : AppCompatActivity() {
     private var day6_maxtemp: TextView? = null
     private var day7_maxtemp: TextView? = null
 
-
+    private var day1_imageView: ImageView? = null
+    private var day2_imageView: ImageView? = null
+    private var day3_imageView: ImageView? = null
+    private var day4_imageView: ImageView? = null
+    private var day5_imageView: ImageView? = null
+    private var day6_imageView: ImageView? = null
+    private var day7_imageView: ImageView? = null
 
 
 
@@ -173,6 +177,14 @@ class MainActivity : AppCompatActivity() {
         day6_maxtemp = findViewById(R.id.day6_maxtemp)
         day7_maxtemp = findViewById(R.id.day7_maxtemp)
 
+        day1_imageView = findViewById(R.id.day1_imageView)
+        day2_imageView = findViewById(R.id.day2_imageView)
+        day3_imageView = findViewById(R.id.day3_imageView)
+        day4_imageView = findViewById(R.id.day4_imageView)
+        day5_imageView = findViewById(R.id.day5_imageView)
+        day6_imageView = findViewById(R.id.day6_imageView)
+        day7_imageView = findViewById(R.id.day7_imageView)
+
         button.setOnClickListener {
             //checkpermissions()
         }
@@ -197,6 +209,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setimage(icon_code: String, i: Int) {
+
+        val urlImage:URL = URL("https://openweathermap.org/img/wn/$icon_code@2x.png")
+        val result: Deferred<Bitmap?> = lifecycleScope.async(Dispatchers.IO) {
+            urlImage.toBitmap
+        }
+        lifecycleScope.launch(Dispatchers.Main) {
+            // show bitmap on image view when available
+
+            if (i==1){day1_imageView?.setImageBitmap(result.await())}
+            if (i==2){day2_imageView?.setImageBitmap(result.await())}
+            if (i==3){day3_imageView?.setImageBitmap(result.await())}
+            if (i==4){day4_imageView?.setImageBitmap(result.await())}
+            if (i==5){day5_imageView?.setImageBitmap(result.await())}
+            if (i==6){day6_imageView?.setImageBitmap(result.await())}
+            if (i==7){day7_imageView?.setImageBitmap(result.await())}
+
+        }
+
+
+    }
 
     @SuppressLint("MissingPermission")
     private fun getlocations() {
@@ -296,6 +329,74 @@ class MainActivity : AppCompatActivity() {
                         temprow12?.text = hours_temperature [11][1]
 
 
+
+                        /*----------------------*/
+
+
+                        val daily = JSONObject(apiResponceTodayandOther).getJSONArray("daily")
+                        day1_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(1).getString("dt").toLong()).toString(),0,10)
+                        day1_mintemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("min").toDouble()).toString()
+                        day1_maxtemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("max").toDouble()).toString()
+
+                        var weather_ico_code_array = daily.getJSONObject(1).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage(weather_ico_code_array, 1)
+                       // setimage(weather_ico_code)?.let { it1 -> Log.d("Message", it1) }
+
+
+
+
+                        day2_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(2).getString("dt").toLong()).toString(),0,10)
+                        day2_mintemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("min").toDouble()).toString()
+                        day2_maxtemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("max").toDouble()).toString()
+
+                        weather_ico_code_array = daily.getJSONObject(2).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage(weather_ico_code_array, 2)
+
+
+                        day3_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(3).getString("dt").toLong()).toString(),0,10)
+                        day3_mintemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("min").toDouble()).toString()
+                        day3_maxtemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("max").toDouble()).toString()
+
+                        weather_ico_code_array = daily.getJSONObject(3).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage(weather_ico_code_array, 3)
+
+
+                        day4_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(4).getString("dt").toLong()).toString(),0,10)
+                        day4_mintemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("min").toDouble()).toString()
+                        day4_maxtemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("max").toDouble()).toString()
+
+                        weather_ico_code_array = daily.getJSONObject(4).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage(weather_ico_code_array, 4)
+
+
+                        day5_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(5).getString("dt").toLong()).toString(),0,10)
+                        day5_mintemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("min").toDouble()).toString()
+                        day5_maxtemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("max").toDouble()).toString()
+
+                        weather_ico_code_array = daily.getJSONObject(5).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage(weather_ico_code_array, 5)
+
+
+                        day6_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(6).getString("dt").toLong()).toString(),0,10)
+                        day6_mintemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("min").toDouble()).toString()
+                        day6_maxtemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("max").toDouble()).toString()
+
+                        weather_ico_code_array = daily.getJSONObject(6).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage(weather_ico_code_array, 6)
+
+
+                        day7_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(7).getString("dt").toLong()).toString(),0,10)
+                        day7_mintemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("min").toDouble()).toString()
+                        day7_maxtemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("max").toDouble()).toString()
+
+                        weather_ico_code_array = daily.getJSONObject(7).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage(weather_ico_code_array, 7)
+
+
+
+                        //Log.d("Message", date_time_days)
+                       // Log.d("Message", daily_temp_min.toString())
+                       // Log.d("Message", daily_temp_max.toString())
                        // timerow1?.text = substring(getDateTimeFromEpocLongOfSeconds(date_time).toString(),11,16)
 
                       //  temprow1?.text = round_hourly_temp.toString()
@@ -335,3 +436,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+
+
+val URL.toBitmap:Bitmap?
+    get() {
+        return try {
+            BitmapFactory.decodeStream(openStream())
+        }catch (e: IOException){null}
+    }
