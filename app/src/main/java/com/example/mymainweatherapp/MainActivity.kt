@@ -70,6 +70,34 @@ class MainActivity : AppCompatActivity() {
     private var temprow12: TextView? = null
 
 
+    private var day1_tview: TextView? = null
+    private var day2_tview: TextView? = null
+    private var day3_tview: TextView? = null
+    private var day4_tview: TextView? = null
+    private var day5_tview: TextView? = null
+    private var day6_tview: TextView? = null
+    private var day7_tview: TextView? = null
+
+    private var day1_mintemp: TextView? = null
+    private var day2_mintemp: TextView? = null
+    private var day3_mintemp: TextView? = null
+    private var day4_mintemp: TextView? = null
+    private var day5_mintemp: TextView? = null
+    private var day6_mintemp: TextView? = null
+    private var day7_mintemp: TextView? = null
+
+    private var day1_maxtemp: TextView? = null
+    private var day2_maxtemp: TextView? = null
+    private var day3_maxtemp: TextView? = null
+    private var day4_maxtemp: TextView? = null
+    private var day5_maxtemp: TextView? = null
+    private var day6_maxtemp: TextView? = null
+    private var day7_maxtemp: TextView? = null
+
+
+
+
+
 
 
     override fun onStart() {
@@ -92,6 +120,7 @@ class MainActivity : AppCompatActivity() {
         atmo_press = findViewById(R.id.atmo_press)
         humidity = findViewById(R.id.humidity)
         wind_speed = findViewById(R.id.wind_speed)
+
         timerow1 = findViewById(R.id.timerow1)
         timerow2 = findViewById(R.id.timerow2)
         timerow3 = findViewById(R.id.timerow3)
@@ -104,6 +133,7 @@ class MainActivity : AppCompatActivity() {
         timerow10 = findViewById(R.id.timerow10)
         timerow11 = findViewById(R.id.timerow11)
         timerow12 = findViewById(R.id.timerow12)
+
         temprow1 = findViewById(R.id.temprow1)
         temprow2 = findViewById(R.id.temprow2)
         temprow3 = findViewById(R.id.temprow3)
@@ -119,7 +149,29 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        day1_tview = findViewById(R.id.day1_tview)
+        day2_tview = findViewById(R.id.day2_tview)
+        day3_tview = findViewById(R.id.day3_tview)
+        day4_tview = findViewById(R.id.day4_tview)
+        day5_tview = findViewById(R.id.day5_tview)
+        day6_tview = findViewById(R.id.day6_tview)
+        day7_tview = findViewById(R.id.day7_tview)
 
+        day1_mintemp = findViewById(R.id.day1_mintemp)
+        day2_mintemp = findViewById(R.id.day2_mintemp)
+        day3_mintemp = findViewById(R.id.day3_mintemp)
+        day4_mintemp = findViewById(R.id.day4_mintemp)
+        day5_mintemp = findViewById(R.id.day5_mintemp)
+        day6_mintemp = findViewById(R.id.day6_mintemp)
+        day7_mintemp = findViewById(R.id.day7_mintemp)
+
+        day1_maxtemp = findViewById(R.id.day1_maxtemp)
+        day2_maxtemp = findViewById(R.id.day2_maxtemp)
+        day3_maxtemp = findViewById(R.id.day3_maxtemp)
+        day4_maxtemp = findViewById(R.id.day4_maxtemp)
+        day5_maxtemp = findViewById(R.id.day5_maxtemp)
+        day6_maxtemp = findViewById(R.id.day6_maxtemp)
+        day7_maxtemp = findViewById(R.id.day7_maxtemp)
 
         button.setOnClickListener {
             //checkpermissions()
