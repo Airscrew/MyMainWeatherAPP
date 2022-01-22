@@ -444,10 +444,9 @@
 
                 <ImageView
                     android:id="@+id/day1_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="58sp"
+                    android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
-                    android:scaleType="centerInside"
                     app:srcCompat="@android:drawable/btn_star_big_on" />
 
                 <TextView
@@ -489,10 +488,10 @@
 
                 <ImageView
                     android:id="@+id/day2_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
+                    android:layout_width="58sp"
+                    android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
+                    app:srcCompat="@android:drawable/btn_star_big_on"
                     />
 
                 <TextView
@@ -533,10 +532,10 @@
 
                 <ImageView
                     android:id="@+id/day3_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
+                    android:layout_width="58sp"
+                    android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
+                    app:srcCompat="@android:drawable/btn_star_big_on"
                     />
 
                 <TextView
@@ -577,10 +576,10 @@
 
                 <ImageView
                     android:id="@+id/day4_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_width="58sp"
+                    android:layout_height="58sp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@android:drawable/btn_star_big_on"/>
 
                 <TextView
                     android:id="@+id/day4_mintemp"
@@ -620,10 +619,10 @@
 
                 <ImageView
                     android:id="@+id/day5_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_width="58sp"
+                    android:layout_height="58sp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@android:drawable/btn_star_big_on"/>
 
                 <TextView
                     android:id="@+id/day5_mintemp"
@@ -663,10 +662,10 @@
 
                 <ImageView
                     android:id="@+id/day6_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_width="58sp"
+                    android:layout_height="58sp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@android:drawable/btn_star_big_on"/>
 
                 <TextView
                     android:id="@+id/day6_mintemp"
@@ -706,10 +705,10 @@
 
                 <ImageView
                     android:id="@+id/day7_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_width="58sp"
+                    android:layout_height="58sp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@android:drawable/btn_star_big_on"/>
 
                 <TextView
                     android:id="@+id/day7_mintemp"
