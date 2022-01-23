@@ -123,6 +123,9 @@ class MainActivity : AppCompatActivity() {
     private var day7_imageView: ImageView? = null
 
 
+
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.nav_menu, menu)
 
@@ -136,9 +139,25 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun getnewcity() {
+        var latlng = intent.getStringExtra("latlng")
+        if (latlng != null) {
+            Log.d("set2222", latlng)
+
+          //  latlng = latlng.replace("(", "")
+          //  latlng = latlng.replace(")", "")
+            val lat = latlng.substring(latlng.indexOf("(")+1,latlng.indexOf(","))
+            val lng = latlng.substring(latlng.indexOf(",")+1,latlng.indexOf(")"))
+            Log.d("lat", lat)
+            Log.d("lng", lng)
+        }
+    }
+
+
     override fun onStart() {
         super.onStart()
         checkpermissions()
+        getnewcity()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

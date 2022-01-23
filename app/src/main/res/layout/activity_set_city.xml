@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".SetCity">
 
-    <EditText
-        android:id="@+id/city_field"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40sp"
-        android:layout_marginTop="60sp"
-        android:hint="@string/hint_user_field"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textColorHint="@color/hint_textColor" />
+        >
+    <fragment
+        android:id="@+id/autocomplete_fragment"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
