@@ -2,6 +2,7 @@ package com.example.mymainweatherapp
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -12,6 +13,8 @@ import android.widget.TextView
 import org.jetbrains.anko.doAsync
 import java.net.URL
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -120,8 +123,18 @@ class MainActivity : AppCompatActivity() {
     private var day7_imageView: ImageView? = null
 
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.nav_menu, menu)
 
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //R.id.menu_change_city ->
+        val intent = Intent(this, SetCity::class.java)
+        startActivity(intent)
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onStart() {
         super.onStart()
