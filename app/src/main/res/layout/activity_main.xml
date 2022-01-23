@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -173,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -184,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -195,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -206,7 +206,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -217,7 +217,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -228,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -239,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -250,7 +250,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -261,7 +261,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="10sp"
-                    android:text="TextView"
+                    android:text="Time"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold"  />
@@ -357,7 +357,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -367,7 +367,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -377,7 +377,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -387,7 +387,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -397,7 +397,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -407,7 +407,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -417,7 +417,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -427,7 +427,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -437,7 +437,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -447,7 +447,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -457,7 +457,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
@@ -467,7 +467,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     />
