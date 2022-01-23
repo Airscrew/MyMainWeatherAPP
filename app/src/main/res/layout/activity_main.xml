@@ -139,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -161,7 +161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -172,7 +172,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -183,7 +183,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -194,7 +194,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -205,7 +205,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -216,7 +216,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -227,7 +227,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -238,7 +238,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -249,7 +249,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -260,7 +260,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="15sp"
+                    android:padding="10sp"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="22sp"
@@ -271,7 +271,80 @@
                 android:id="@+id/icoweatherrow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="10sp" />
+                android:paddingStart="10sp" >
+
+                <ImageView
+                    android:id="@+id/imageViewRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewRow12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58sp"
+                     />
+            </TableRow>
 
             <TableRow
                 android:id="@+id/temprow"
@@ -287,7 +360,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow2"
@@ -297,7 +370,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow3"
@@ -307,7 +380,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow4"
@@ -317,7 +390,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow5"
@@ -327,7 +400,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow6"
@@ -337,7 +410,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow7"
@@ -347,7 +420,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow8"
@@ -357,7 +430,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow9"
@@ -367,7 +440,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow10"
@@ -377,7 +450,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow11"
@@ -387,7 +460,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
 
                 <TextView
                     android:id="@+id/temprow12"
@@ -397,7 +470,7 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                    android:padding="15sp"/>
+                    />
             </TableRow>
 
         </TableLayout>
@@ -447,7 +520,7 @@
                     android:layout_width="58sp"
                     android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@android:drawable/btn_star_big_on" />
+                     />
 
                 <TextView
                     android:id="@+id/day1_mintemp"
@@ -491,7 +564,7 @@
                     android:layout_width="58sp"
                     android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
+
                     />
 
                 <TextView
@@ -534,9 +607,7 @@
                     android:id="@+id/day3_imageView"
                     android:layout_width="58sp"
                     android:layout_height="58sp"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@android:drawable/btn_star_big_on"
-                    />
+                    android:layout_gravity="center_vertical" />
 
                 <TextView
                     android:id="@+id/day3_mintemp"
@@ -579,7 +650,7 @@
                     android:layout_width="58sp"
                     android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@android:drawable/btn_star_big_on"/>
+                    />
 
                 <TextView
                     android:id="@+id/day4_mintemp"
@@ -622,7 +693,7 @@
                     android:layout_width="58sp"
                     android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@android:drawable/btn_star_big_on"/>
+                    />
 
                 <TextView
                     android:id="@+id/day5_mintemp"
@@ -665,7 +736,7 @@
                     android:layout_width="58sp"
                     android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@android:drawable/btn_star_big_on"/>
+                    />
 
                 <TextView
                     android:id="@+id/day6_mintemp"
@@ -708,7 +779,7 @@
                     android:layout_width="58sp"
                     android:layout_height="58sp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@android:drawable/btn_star_big_on"/>
+                    />
 
                 <TextView
                     android:id="@+id/day7_mintemp"

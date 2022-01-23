@@ -54,6 +54,22 @@ class MainActivity : AppCompatActivity() {
     private var timerow10: TextView? = null
     private var timerow11: TextView? = null
     private var timerow12: TextView? = null
+
+    private var  imageViewRow1: ImageView? = null
+    private var  imageViewRow2: ImageView? = null
+    private var  imageViewRow3: ImageView? = null
+    private var  imageViewRow4: ImageView? = null
+    private var  imageViewRow5: ImageView? = null
+    private var  imageViewRow6: ImageView? = null
+    private var  imageViewRow7: ImageView? = null
+    private var  imageViewRow8: ImageView? = null
+    private var  imageViewRow9: ImageView? = null
+    private var  imageViewRow10: ImageView? = null
+    private var  imageViewRow11: ImageView? = null
+    private var  imageViewRow12: ImageView? = null
+
+
+
     private var temprow1: TextView? = null
     private var temprow2: TextView? = null
     private var temprow3: TextView? = null
@@ -138,6 +154,20 @@ class MainActivity : AppCompatActivity() {
         timerow11 = findViewById(R.id.timerow11)
         timerow12 = findViewById(R.id.timerow12)
 
+        imageViewRow1 = findViewById(R.id.imageViewRow1)
+        imageViewRow2 = findViewById(R.id.imageViewRow2)
+        imageViewRow3 = findViewById(R.id.imageViewRow3)
+        imageViewRow4 = findViewById(R.id.imageViewRow4)
+        imageViewRow5 = findViewById(R.id.imageViewRow5)
+        imageViewRow6 = findViewById(R.id.imageViewRow6)
+        imageViewRow7 = findViewById(R.id.imageViewRow7)
+        imageViewRow8 = findViewById(R.id.imageViewRow8)
+        imageViewRow9 = findViewById(R.id.imageViewRow9)
+        imageViewRow10 = findViewById(R.id.imageViewRow10)
+        imageViewRow11 = findViewById(R.id.imageViewRow11)
+        imageViewRow12 = findViewById(R.id.imageViewRow12)
+
+
         temprow1 = findViewById(R.id.temprow1)
         temprow2 = findViewById(R.id.temprow2)
         temprow3 = findViewById(R.id.temprow3)
@@ -209,7 +239,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setimage(icon_code: String, i: Int) {
+    private fun setimage_daily(icon_code: String, i: Int) {
 
         val urlImage:URL = URL("https://openweathermap.org/img/wn/$icon_code@2x.png")
         val result: Deferred<Bitmap?> = lifecycleScope.async(Dispatchers.IO) {
@@ -231,6 +261,34 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    private fun setimage_hourly(icon_code: String, i: Int) {
+
+        val urlImage:URL = URL("https://openweathermap.org/img/wn/$icon_code@2x.png")
+        val result: Deferred<Bitmap?> = lifecycleScope.async(Dispatchers.IO) {
+            urlImage.toBitmap
+        }
+        lifecycleScope.launch(Dispatchers.Main) {
+            // show bitmap on image view when available
+            if (i==0){imageViewRow1?.setImageBitmap(result.await())}
+            if (i==1){imageViewRow2?.setImageBitmap(result.await())}
+            if (i==2){imageViewRow3?.setImageBitmap(result.await())}
+            if (i==3){imageViewRow4?.setImageBitmap(result.await())}
+            if (i==4){imageViewRow5?.setImageBitmap(result.await())}
+            if (i==5){imageViewRow6?.setImageBitmap(result.await())}
+            if (i==6){imageViewRow7?.setImageBitmap(result.await())}
+            if (i==7){imageViewRow8?.setImageBitmap(result.await())}
+            if (i==8){imageViewRow9?.setImageBitmap(result.await())}
+            if (i==9){imageViewRow10?.setImageBitmap(result.await())}
+            if (i==10){imageViewRow11?.setImageBitmap(result.await())}
+            if (i==11){imageViewRow12?.setImageBitmap(result.await())}
+
+
+
+        }
+
+
+    }
     @SuppressLint("MissingPermission")
     private fun getlocations() {
 
@@ -252,6 +310,9 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Message", apiResponceTodayandOther)
 
                     runOnUiThread {
+
+                        /*------------current----------*/
+
                         val main = JSONObject(apiResponse).getJSONObject("main")
 
                         val round_curr_temp = Math.round(main.getDouble("temp"))
@@ -270,9 +331,27 @@ class MainActivity : AppCompatActivity() {
 
                         curr_city?.text = JSONObject(apiResponse).getString("name")
 
-                        /*----------------------*/
+
+                       // val weather_current = JSONObject(apiResponse).getJSONArray("weather").getJSONObject(0).getString("icon")
+
+
+                            // Log.d("Message2", weather_current)
+
+                        /*------------hourly----------*/
 
                         val hourly = JSONObject(apiResponceTodayandOther).getJSONArray("hourly")
+                        var k = 0
+                        var hourly_weather_ico_code : String
+                        while(k<12) {
+                            hourly_weather_ico_code = hourly.getJSONObject(k).getJSONArray("weather").getJSONObject(0).getString("icon")
+                            setimage_hourly(hourly_weather_ico_code, k)
+                            k++
+                        }
+
+
+                        //Log.d("Message2", hourly_weather_ico_code)
+
+
                         val hours_temperature : Array<Array<String>> = Array(12, { Array(2, {""}) })
 
                         var j = 0
@@ -281,10 +360,10 @@ class MainActivity : AppCompatActivity() {
                             val date_time = hourly.getJSONObject(i).getString("dt").toLong()
                             val round_hourly_temp = Math.round(hourly.getJSONObject(i).getDouble("temp"))
                             hours_temperature[i][j] = substring(getDateTimeFromEpocLongOfSeconds(date_time).toString(),11,16)
-                            Log.d("Message", hours_temperature[i][j])
+                            //Log.d("Message", hours_temperature[i][j])
                             j=1
                             hours_temperature[i][j] =round_hourly_temp.toString()
-                            Log.d("Message", hours_temperature[i][j])
+                            //Log.d("Message", hours_temperature[i][j])
                             j=0
 
                             i++
@@ -330,7 +409,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                        /*----------------------*/
+                        /*-----------daily-----------*/
 
 
                         val daily = JSONObject(apiResponceTodayandOther).getJSONArray("daily")
@@ -338,9 +417,16 @@ class MainActivity : AppCompatActivity() {
                         day1_mintemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("min").toDouble()).toString()
                         day1_maxtemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("max").toDouble()).toString()
 
-                        var weather_ico_code_array = daily.getJSONObject(1).getJSONArray("weather").getJSONObject(0).getString("icon")
-                        setimage(weather_ico_code_array, 1)
+
                        // setimage(weather_ico_code)?.let { it1 -> Log.d("Message", it1) }
+
+                        var n = 1
+                        var weather_ico_code_array : String
+                        while(n<8) {
+                            weather_ico_code_array = daily.getJSONObject(n).getJSONArray("weather").getJSONObject(0).getString("icon")
+                            setimage_daily(weather_ico_code_array, n)
+                            n++
+                        }
 
 
 
@@ -349,48 +435,39 @@ class MainActivity : AppCompatActivity() {
                         day2_mintemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("min").toDouble()).toString()
                         day2_maxtemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("max").toDouble()).toString()
 
-                        weather_ico_code_array = daily.getJSONObject(2).getJSONArray("weather").getJSONObject(0).getString("icon")
-                        setimage(weather_ico_code_array, 2)
+
 
 
                         day3_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(3).getString("dt").toLong()).toString(),0,10)
                         day3_mintemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("min").toDouble()).toString()
                         day3_maxtemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("max").toDouble()).toString()
 
-                        weather_ico_code_array = daily.getJSONObject(3).getJSONArray("weather").getJSONObject(0).getString("icon")
-                        setimage(weather_ico_code_array, 3)
+
 
 
                         day4_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(4).getString("dt").toLong()).toString(),0,10)
                         day4_mintemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("min").toDouble()).toString()
                         day4_maxtemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("max").toDouble()).toString()
 
-                        weather_ico_code_array = daily.getJSONObject(4).getJSONArray("weather").getJSONObject(0).getString("icon")
-                        setimage(weather_ico_code_array, 4)
 
 
                         day5_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(5).getString("dt").toLong()).toString(),0,10)
                         day5_mintemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("min").toDouble()).toString()
                         day5_maxtemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("max").toDouble()).toString()
 
-                        weather_ico_code_array = daily.getJSONObject(5).getJSONArray("weather").getJSONObject(0).getString("icon")
-                        setimage(weather_ico_code_array, 5)
 
 
                         day6_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(6).getString("dt").toLong()).toString(),0,10)
                         day6_mintemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("min").toDouble()).toString()
                         day6_maxtemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("max").toDouble()).toString()
 
-                        weather_ico_code_array = daily.getJSONObject(6).getJSONArray("weather").getJSONObject(0).getString("icon")
-                        setimage(weather_ico_code_array, 6)
+
 
 
                         day7_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(7).getString("dt").toLong()).toString(),0,10)
                         day7_mintemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("min").toDouble()).toString()
                         day7_maxtemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("max").toDouble()).toString()
 
-                        weather_ico_code_array = daily.getJSONObject(7).getJSONArray("weather").getJSONObject(0).getString("icon")
-                        setimage(weather_ico_code_array, 7)
 
 
 
