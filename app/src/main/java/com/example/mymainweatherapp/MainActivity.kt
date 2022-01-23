@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var button: Button
     private var curr_city: TextView? = null
+    private var curr_date: TextView? = null
     private var curr_temp: TextView? = null
     private var min_temp: TextView? = null
     private var max_temp: TextView? = null
@@ -54,6 +55,8 @@ class MainActivity : AppCompatActivity() {
     private var timerow10: TextView? = null
     private var timerow11: TextView? = null
     private var timerow12: TextView? = null
+
+    private var  curr_icon: ImageView? = null
 
     private var  imageViewRow1: ImageView? = null
     private var  imageViewRow2: ImageView? = null
@@ -134,6 +137,7 @@ class MainActivity : AppCompatActivity() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         button = findViewById(R.id.button)
         curr_city = findViewById(R.id.curr_city)
+        curr_date = findViewById(R.id.curr_date)
         curr_temp = findViewById(R.id.curr_temp)
         min_temp = findViewById(R.id.min_temp)
         max_temp = findViewById(R.id.max_temp)
@@ -153,6 +157,8 @@ class MainActivity : AppCompatActivity() {
         timerow10 = findViewById(R.id.timerow10)
         timerow11 = findViewById(R.id.timerow11)
         timerow12 = findViewById(R.id.timerow12)
+
+        curr_icon = findViewById(R.id.curr_icon)
 
         imageViewRow1 = findViewById(R.id.imageViewRow1)
         imageViewRow2 = findViewById(R.id.imageViewRow2)
@@ -270,7 +276,11 @@ class MainActivity : AppCompatActivity() {
         }
         lifecycleScope.launch(Dispatchers.Main) {
             // show bitmap on image view when available
-            if (i==0){imageViewRow1?.setImageBitmap(result.await())}
+            if (i==0){
+                imageViewRow1?.setImageBitmap(result.await())
+                curr_icon?.setImageBitmap(result.await())
+
+            }
             if (i==1){imageViewRow2?.setImageBitmap(result.await())}
             if (i==2){imageViewRow3?.setImageBitmap(result.await())}
             if (i==3){imageViewRow4?.setImageBitmap(result.await())}
@@ -319,6 +329,7 @@ class MainActivity : AppCompatActivity() {
                         val round_min_temp = Math.round(main.getDouble("temp_min"))
                         val round_max_temp = Math.round(main.getDouble("temp_max"))
 
+                        curr_date?.text = substring(Date().toString(),0,16)
                         curr_temp?.text = round_curr_temp.toString() + "℃"
                         min_temp?.text =round_min_temp.toString()+" min"
                         max_temp?.text =round_max_temp.toString()+" max"

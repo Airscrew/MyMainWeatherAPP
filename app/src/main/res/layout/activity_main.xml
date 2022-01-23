@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/curr_icon"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_below="@id/curr_date"
+        android:layout_marginTop="5sp"
+        android:layout_toStartOf="@id/curr_temp" />
+
+    <TextView
+        android:id="@+id/curr_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/curr_city"
+        android:text="curr_date"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-condensed-medium"/>
+
     <View
         android:id="@+id/divider3"
         android:layout_width="match_parent"
@@ -20,7 +38,7 @@
         android:id="@+id/curr_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
+        android:layout_marginTop="20sp"
 
         android:fontFamily="sans-serif-condensed-medium"
         android:text="curr_city"
@@ -31,7 +49,7 @@
         android:id="@+id/curr_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/curr_city"
+        android:layout_below="@id/curr_date"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5sp"
         android:fontFamily="sans-serif-condensed-medium"
@@ -42,7 +60,7 @@
         android:id="@+id/min_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/curr_city"
+        android:layout_below="@id/curr_date"
         android:layout_marginStart="10sp"
         android:layout_marginTop="5sp"
         android:layout_marginEnd="5sp"
@@ -510,7 +528,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Day"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -528,7 +546,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -538,7 +556,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -554,7 +572,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Day"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -573,7 +591,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -583,7 +601,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
             </TableRow>
@@ -598,7 +616,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Day"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -615,7 +633,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -625,7 +643,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
             </TableRow>
@@ -640,7 +658,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Day"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -658,7 +676,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -668,7 +686,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
             </TableRow>
@@ -683,7 +701,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Day"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -701,7 +719,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -711,7 +729,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
             </TableRow>
@@ -726,7 +744,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Day"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -744,7 +762,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -754,7 +772,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
             </TableRow>
@@ -769,7 +787,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Day"
                     android:textAlignment="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -787,7 +805,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 
@@ -797,7 +815,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="15sp"
-                    android:text="TextView"
+                    android:text="Temp"
                     android:textAlignment="center"
                     android:textSize="20sp" />
             </TableRow>
