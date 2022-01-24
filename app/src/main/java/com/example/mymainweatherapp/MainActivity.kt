@@ -36,7 +36,6 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var button: Button
     private var curr_city: TextView? = null
     private var curr_date: TextView? = null
     private var curr_temp: TextView? = null
@@ -74,8 +73,6 @@ class MainActivity : AppCompatActivity() {
     private var  imageViewRow11: ImageView? = null
     private var  imageViewRow12: ImageView? = null
 
-
-
     private var temprow1: TextView? = null
     private var temprow2: TextView? = null
     private var temprow3: TextView? = null
@@ -88,7 +85,6 @@ class MainActivity : AppCompatActivity() {
     private var temprow10: TextView? = null
     private var temprow11: TextView? = null
     private var temprow12: TextView? = null
-
 
     private var day1_tview: TextView? = null
     private var day2_tview: TextView? = null
@@ -122,13 +118,16 @@ class MainActivity : AppCompatActivity() {
     private var day6_imageView: ImageView? = null
     private var day7_imageView: ImageView? = null
 
+    private var state: String = "current"
+
+    private var latitude: String = ""
+    private var longitude: String = ""
 
 
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.nav_menu, menu)
-
         return true
     }
 
@@ -139,35 +138,30 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getnewcity() {
-        var latlng = intent.getStringExtra("latlng")
-        if (latlng != null) {
-            Log.d("set2222", latlng)
+    private fun getnewcity() : String {
+        val latlng = intent.getStringExtra("latlng")
+        return latlng.toString()
+    }
 
-          //  latlng = latlng.replace("(", "")
-          //  latlng = latlng.replace(")", "")
-            val lat = latlng.substring(latlng.indexOf("(")+1,latlng.indexOf(","))
-            val lng = latlng.substring(latlng.indexOf(",")+1,latlng.indexOf(")"))
-            Log.d("lat", lat)
-            Log.d("lng", lng)
+    private fun checkstate() {
+        val latlng = intent.getStringExtra("latlng")
+        if (latlng != null) {
+            state = "new_location"
         }
     }
 
-
     override fun onStart() {
         super.onStart()
+        checkstate()
         checkpermissions()
-        getnewcity()
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        button = findViewById(R.id.button)
         curr_city = findViewById(R.id.curr_city)
         curr_date = findViewById(R.id.curr_date)
         curr_temp = findViewById(R.id.curr_temp)
@@ -205,7 +199,6 @@ class MainActivity : AppCompatActivity() {
         imageViewRow11 = findViewById(R.id.imageViewRow11)
         imageViewRow12 = findViewById(R.id.imageViewRow12)
 
-
         temprow1 = findViewById(R.id.temprow1)
         temprow2 = findViewById(R.id.temprow2)
         temprow3 = findViewById(R.id.temprow3)
@@ -218,8 +211,6 @@ class MainActivity : AppCompatActivity() {
         temprow10 = findViewById(R.id.temprow10)
         temprow11 = findViewById(R.id.temprow11)
         temprow12 = findViewById(R.id.temprow12)
-
-
 
         day1_tview = findViewById(R.id.day1_tview)
         day2_tview = findViewById(R.id.day2_tview)
@@ -253,16 +244,15 @@ class MainActivity : AppCompatActivity() {
         day6_imageView = findViewById(R.id.day6_imageView)
         day7_imageView = findViewById(R.id.day7_imageView)
 
-        button.setOnClickListener {
-            //checkpermissions()
-        }
+
     }
 
     private fun checkpermissions() {
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED) {
              ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), 1 )
         }else {
-            getlocations()
+
+            getlocations(state)
         }
     }
 
@@ -285,7 +275,6 @@ class MainActivity : AppCompatActivity() {
         }
         lifecycleScope.launch(Dispatchers.Main) {
             // show bitmap on image view when available
-
             if (i==1){day1_imageView?.setImageBitmap(result.await())}
             if (i==2){day2_imageView?.setImageBitmap(result.await())}
             if (i==3){day3_imageView?.setImageBitmap(result.await())}
@@ -293,10 +282,7 @@ class MainActivity : AppCompatActivity() {
             if (i==5){day5_imageView?.setImageBitmap(result.await())}
             if (i==6){day6_imageView?.setImageBitmap(result.await())}
             if (i==7){day7_imageView?.setImageBitmap(result.await())}
-
         }
-
-
     }
 
 
@@ -311,7 +297,6 @@ class MainActivity : AppCompatActivity() {
             if (i==0){
                 imageViewRow1?.setImageBitmap(result.await())
                 curr_icon?.setImageBitmap(result.await())
-
             }
             if (i==1){imageViewRow2?.setImageBitmap(result.await())}
             if (i==2){imageViewRow3?.setImageBitmap(result.await())}
@@ -324,26 +309,39 @@ class MainActivity : AppCompatActivity() {
             if (i==9){imageViewRow10?.setImageBitmap(result.await())}
             if (i==10){imageViewRow11?.setImageBitmap(result.await())}
             if (i==11){imageViewRow12?.setImageBitmap(result.await())}
-
-
-
         }
-
-
     }
+
+
     @SuppressLint("MissingPermission")
-    private fun getlocations() {
+    private fun getlocations(state:String) {
+        val key: String = "5f05959757851e75b4bc0e978af14c8e"
+        var urlTodayandOther: String = ""
+        var url_current: String = ""
 
         fusedLocationProviderClient.lastLocation.addOnSuccessListener {
 
             if (it == null){
                 Toast.makeText(this,"Невозможно определить геопозицию", Toast.LENGTH_SHORT).show()
             } else it.apply {
-                val latitude = it.latitude
-                val longitude = it.longitude
-                val key: String = "5f05959757851e75b4bc0e978af14c8e"
-                val urlTodayandOther: String = "https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&exclude=current,minutely,alerts&units=metric&lang=ru&appid=$key&units=metric&lang=ru"
-                val url_current: String = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$key&units=metric&lang=ru"
+
+                if (state != "current"){
+                    var newlatlng = getnewcity()
+                        latitude = newlatlng.substring(newlatlng.indexOf("(")+1,newlatlng.indexOf(",")).toDouble()
+                        longitude = newlatlng.substring(newlatlng.indexOf(",")+1,newlatlng.indexOf(")")).toDouble()
+
+                        Log.d("Message1", state+" "+ latitude+" "+longitude)
+                        urlTodayandOther = "https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&exclude=current,minutely,alerts&units=metric&lang=ru&appid=$key&units=metric&lang=ru"
+                        url_current = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$key&units=metric&lang=ru"
+
+                } else {
+                    var latitude = it.latitude.toString()
+                    var longitude = it.longitude.toString()
+
+                        Log.d("Message2", state+" "+ latitude+" "+longitude)
+                        urlTodayandOther = "https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&exclude=current,minutely,alerts&units=metric&lang=ru&appid=$key&units=metric&lang=ru"
+                        url_current = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$key&units=metric&lang=ru"
+                }
 
 
                 doAsync {
@@ -375,11 +373,6 @@ class MainActivity : AppCompatActivity() {
                         curr_city?.text = JSONObject(apiResponse).getString("name")
 
 
-                       // val weather_current = JSONObject(apiResponse).getJSONArray("weather").getJSONObject(0).getString("icon")
-
-
-                            // Log.d("Message2", weather_current)
-
                         /*------------hourly----------*/
 
                         val hourly = JSONObject(apiResponceTodayandOther).getJSONArray("hourly")
@@ -391,9 +384,7 @@ class MainActivity : AppCompatActivity() {
                             k++
                         }
 
-
                         //Log.d("Message2", hourly_weather_ico_code)
-
 
                         val hours_temperature : Array<Array<String>> = Array(12, { Array(2, {""}) })
 
@@ -408,10 +399,7 @@ class MainActivity : AppCompatActivity() {
                             hours_temperature[i][j] =round_hourly_temp.toString()
                             //Log.d("Message", hours_temperature[i][j])
                             j=0
-
                             i++
-
-
                         }
 
                         timerow1?.text = hours_temperature [0][0]
@@ -454,12 +442,10 @@ class MainActivity : AppCompatActivity() {
 
                         /*-----------daily-----------*/
 
-
                         val daily = JSONObject(apiResponceTodayandOther).getJSONArray("daily")
                         day1_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(1).getString("dt").toLong()).toString(),0,10)
                         day1_mintemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("min").toDouble()).toString()
                         day1_maxtemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("max").toDouble()).toString()
-
 
                        // setimage(weather_ico_code)?.let { it1 -> Log.d("Message", it1) }
 
@@ -471,68 +457,37 @@ class MainActivity : AppCompatActivity() {
                             n++
                         }
 
-
-
-
                         day2_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(2).getString("dt").toLong()).toString(),0,10)
                         day2_mintemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("min").toDouble()).toString()
                         day2_maxtemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("max").toDouble()).toString()
-
-
-
 
                         day3_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(3).getString("dt").toLong()).toString(),0,10)
                         day3_mintemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("min").toDouble()).toString()
                         day3_maxtemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("max").toDouble()).toString()
 
-
-
-
                         day4_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(4).getString("dt").toLong()).toString(),0,10)
                         day4_mintemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("min").toDouble()).toString()
                         day4_maxtemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("max").toDouble()).toString()
-
-
 
                         day5_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(5).getString("dt").toLong()).toString(),0,10)
                         day5_mintemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("min").toDouble()).toString()
                         day5_maxtemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("max").toDouble()).toString()
 
-
-
                         day6_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(6).getString("dt").toLong()).toString(),0,10)
                         day6_mintemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("min").toDouble()).toString()
                         day6_maxtemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("max").toDouble()).toString()
 
-
-
-
                         day7_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(7).getString("dt").toLong()).toString(),0,10)
                         day7_mintemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("min").toDouble()).toString()
                         day7_maxtemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("max").toDouble()).toString()
-
-
-
-
-                        //Log.d("Message", date_time_days)
+                      //Log.d("Message", date_time_days)
                        // Log.d("Message", daily_temp_min.toString())
                        // Log.d("Message", daily_temp_max.toString())
                        // timerow1?.text = substring(getDateTimeFromEpocLongOfSeconds(date_time).toString(),11,16)
-
                       //  temprow1?.text = round_hourly_temp.toString()
-
                        // Log.d("Message", substring(getDateTimeFromEpocLongOfSeconds(date_time).toString(),11,16))
                     }
-
-
-
-
-
                 }
-
-
-
-
             }
         }
     }
@@ -547,7 +502,7 @@ class MainActivity : AppCompatActivity() {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
                     Toast.makeText(this,"Permission granted", Toast.LENGTH_SHORT).show()
-                    getlocations()
+                    getlocations(state)
                 }
                 else {
                     Toast.makeText(this,"Permission denied", Toast.LENGTH_SHORT).show()
@@ -556,8 +511,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-
 
 val URL.toBitmap:Bitmap?
     get() {

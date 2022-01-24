@@ -124,15 +124,6 @@
                 android:text="wind_speed"
                 android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/wind_speed"
-                android:layout_centerHorizontal="true"
-                android:text="Button"
-                android:visibility="invisible" />
-
             <View
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
