@@ -5,12 +5,12 @@
     android:id="@+id/RelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/a1"
     tools:context=".MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
 
         <RelativeLayout
@@ -19,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/curr_icon"
-                android:layout_width="66dp"
-                android:layout_height="66dp"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
                 android:layout_below="@id/curr_date"
                 android:layout_marginTop="5sp"
                 android:layout_toStartOf="@id/curr_temp" />
@@ -30,10 +30,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/curr_city"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:text="curr_date"
                 android:textAlignment="center"
-                android:textSize="20sp"
-                android:fontFamily="sans-serif-condensed-medium"/>
+                android:textSize="20sp" />
 
             <View
                 android:id="@+id/divider3"
@@ -53,6 +53,7 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="curr_city"
                 android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="40sp" />
 
             <TextView
@@ -64,6 +65,7 @@
                 android:layout_marginTop="5sp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="curr_temp"
+                android:textColor="@color/black"
                 android:textSize="50sp" />
 
             <TextView
@@ -130,15 +132,15 @@
                 android:layout_height="4dp"
                 android:layout_below="@id/wind_speed"
                 android:layout_marginTop="12sp"
-                android:background="?android:attr/listDivider"
-                android:backgroundTint="#4a90e2" />
+
+                android:background="@color/white" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalscroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/divider2"
-                android:layout_marginTop="12sp"
+                android:background="@color/a2"
                 android:scrollbarSize="0dp">
 
                 <TableLayout
@@ -173,7 +175,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow3"
@@ -184,7 +186,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow4"
@@ -195,7 +197,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow5"
@@ -206,7 +208,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow6"
@@ -217,7 +219,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow7"
@@ -228,7 +230,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow8"
@@ -239,7 +241,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow9"
@@ -250,7 +252,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow10"
@@ -261,7 +263,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow11"
@@ -272,7 +274,7 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/timerow12"
@@ -283,86 +285,74 @@
                             android:text="Time"
                             android:textAlignment="center"
                             android:textSize="22sp"
-                            android:textStyle="bold"  />
+                            android:textStyle="bold" />
                     </TableRow>
 
                     <TableRow
                         android:id="@+id/icoweatherrow"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingStart="10sp" >
+                        android:paddingStart="10sp">
 
                         <ImageView
                             android:id="@+id/imageViewRow1"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow2"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow3"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow4"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow5"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow6"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow7"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow8"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow9"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow10"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow11"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
 
                         <ImageView
                             android:id="@+id/imageViewRow12"
                             android:layout_width="wrap_content"
-                            android:layout_height="58sp"
-                            />
+                            android:layout_height="58sp" />
                     </TableRow>
 
                     <TableRow
@@ -379,7 +369,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow2"
@@ -389,7 +379,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow3"
@@ -399,7 +389,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow4"
@@ -409,7 +399,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow5"
@@ -419,7 +409,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow6"
@@ -429,7 +419,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow7"
@@ -439,7 +429,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow8"
@@ -449,7 +439,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow9"
@@ -459,7 +449,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow10"
@@ -469,7 +459,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow11"
@@ -479,7 +469,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
 
                         <TextView
                             android:id="@+id/temprow12"
@@ -489,7 +479,7 @@
                             android:text="Temp"
                             android:textAlignment="center"
                             android:textSize="20sp"
-                            />
+                            android:paddingBottom="10sp"/>
                     </TableRow>
 
                 </TableLayout>
@@ -500,336 +490,321 @@
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:layout_below="@id/horizontalscroll"
-                android:layout_marginTop="12sp"
-                android:background="?android:attr/listDivider"
-                android:backgroundTint="#4a90e2"
+                android:background="@color/white"
 
                 />
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/divider4"
-                android:layout_marginTop="12sp"
-                android:scrollbarSize="0dp">
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="10sp"
+                android:layout_marginBottom="10sp"
+                android:stretchColumns="*">
 
-                <TableLayout
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10sp"
-                    android:stretchColumns="*">
+                    android:layout_height="match_parent">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/day1_tview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Day"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/day1_tview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Day"
-                            android:textAlignment="center"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/day1_imageView"
+                        android:layout_width="58sp"
+                        android:layout_height="58sp"
+                        android:layout_gravity="center_vertical" />
 
-                        <ImageView
-                            android:id="@+id/day1_imageView"
-                            android:layout_width="58sp"
-                            android:layout_height="58sp"
-                            android:layout_gravity="center_vertical"
-                            />
+                    <TextView
+                        android:id="@+id/day1_mintemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/day1_mintemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/day1_maxtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/day1_maxtemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
+                </TableRow>
 
-                    </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/day2_tview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Day"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/day2_tview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Day"
-                            android:textAlignment="center"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/day2_imageView"
+                        android:layout_width="58sp"
+                        android:layout_height="58sp"
+                        android:layout_gravity="center_vertical"
 
-                        <ImageView
-                            android:id="@+id/day2_imageView"
-                            android:layout_width="58sp"
-                            android:layout_height="58sp"
-                            android:layout_gravity="center_vertical"
+                        />
 
-                            />
+                    <TextView
+                        android:id="@+id/day2_mintemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/day2_mintemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/day2_maxtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/day2_maxtemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
-                    </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/day3_tview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Day"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/day3_tview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Day"
-                            android:textAlignment="center"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/day3_imageView"
+                        android:layout_width="58sp"
+                        android:layout_height="58sp"
+                        android:layout_gravity="center_vertical" />
 
-                        <ImageView
-                            android:id="@+id/day3_imageView"
-                            android:layout_width="58sp"
-                            android:layout_height="58sp"
-                            android:layout_gravity="center_vertical" />
+                    <TextView
+                        android:id="@+id/day3_mintemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/day3_mintemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/day3_maxtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/day3_maxtemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
-                    </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/day4_tview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Day"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/day4_tview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Day"
-                            android:textAlignment="center"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/day4_imageView"
+                        android:layout_width="58sp"
+                        android:layout_height="58sp"
+                        android:layout_gravity="center_vertical" />
 
-                        <ImageView
-                            android:id="@+id/day4_imageView"
-                            android:layout_width="58sp"
-                            android:layout_height="58sp"
-                            android:layout_gravity="center_vertical"
-                            />
+                    <TextView
+                        android:id="@+id/day4_mintemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/day4_mintemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/day4_maxtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/day4_maxtemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
-                    </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/day5_tview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Day"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/day5_tview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Day"
-                            android:textAlignment="center"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/day5_imageView"
+                        android:layout_width="58sp"
+                        android:layout_height="58sp"
+                        android:layout_gravity="center_vertical" />
 
-                        <ImageView
-                            android:id="@+id/day5_imageView"
-                            android:layout_width="58sp"
-                            android:layout_height="58sp"
-                            android:layout_gravity="center_vertical"
-                            />
+                    <TextView
+                        android:id="@+id/day5_mintemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/day5_mintemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/day5_maxtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/day5_maxtemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
-                    </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/day6_tview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Day"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/day6_tview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Day"
-                            android:textAlignment="center"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/day6_imageView"
+                        android:layout_width="58sp"
+                        android:layout_height="58sp"
+                        android:layout_gravity="center_vertical" />
 
-                        <ImageView
-                            android:id="@+id/day6_imageView"
-                            android:layout_width="58sp"
-                            android:layout_height="58sp"
-                            android:layout_gravity="center_vertical"
-                            />
+                    <TextView
+                        android:id="@+id/day6_mintemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/day6_mintemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/day6_maxtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/day6_maxtemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
-                    </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/day7_tview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Day"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/day7_tview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Day"
-                            android:textAlignment="center"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/day7_imageView"
+                        android:layout_width="58sp"
+                        android:layout_height="58sp"
+                        android:layout_gravity="center_vertical" />
 
-                        <ImageView
-                            android:id="@+id/day7_imageView"
-                            android:layout_width="58sp"
-                            android:layout_height="58sp"
-                            android:layout_gravity="center_vertical"
-                            />
+                    <TextView
+                        android:id="@+id/day7_mintemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/day7_mintemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:id="@+id/day7_maxtemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:padding="15sp"
-                            android:text="Temp"
-                            android:textAlignment="center"
-                            android:textSize="20sp" />
-                    </TableRow>
-                </TableLayout>
-            </ScrollView>
-
-
-
+                    <TextView
+                        android:id="@+id/day7_maxtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="15sp"
+                        android:text="Temp"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </TableRow>
+            </TableLayout>
 
 
         </RelativeLayout>
     </ScrollView>
-
 
 
 </RelativeLayout>
