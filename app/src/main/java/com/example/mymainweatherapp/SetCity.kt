@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.ktx.widget.PlaceSelectionError
@@ -25,7 +24,7 @@ class SetCity : AppCompatActivity() {
         setContentView(R.layout.activity_set_city)
 
         val key = "AIzaSyC0dSUlEmIgfJtEHQQadyTsK7u83B6H1HQ"
-        Places.initialize(applicationContext, key);
+        Places.initialize(applicationContext, key)
         val autocompleteFragment =
             supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
                     as AutocompleteSupportFragment

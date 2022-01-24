@@ -15,7 +15,6 @@ import java.net.URL
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -27,11 +26,10 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.find
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import java.util.*
+import kotlin.math.roundToInt
 
 
 class MainActivity : AppCompatActivity() {
@@ -259,7 +257,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 //преобразование unix штампа в дату время
-    private fun getDateTimeFromEpocLongOfSeconds(epoc: Long): String? {
+    private fun getDateTimeFromEpocLongOfSeconds(epoc: Long): String {
         try {
             val netDate = Date(epoc*1000)
             return netDate.toString()
@@ -272,7 +270,7 @@ class MainActivity : AppCompatActivity() {
 //закгрузка соответствующих погодных иконок в разбивку по дням
     private fun setimage_daily(icon_code: String, i: Int) {
 
-        val urlImage:URL = URL("https://openweathermap.org/img/wn/$icon_code@2x.png")
+        val urlImage = URL("https://openweathermap.org/img/wn/$icon_code@2x.png")
         // async task to get bitmap from url
         val result: Deferred<Bitmap?> = lifecycleScope.async(Dispatchers.IO) {
             urlImage.toBitmap
@@ -293,7 +291,7 @@ class MainActivity : AppCompatActivity() {
 //закгрузка соответствующих погодных иконок в разбивку по часам
     private fun setimage_hourly(icon_code: String, i: Int) {
 
-        val urlImage:URL = URL("https://openweathermap.org/img/wn/$icon_code@2x.png")
+        val urlImage = URL("https://openweathermap.org/img/wn/$icon_code@2x.png")
         // async task to get bitmap from url
         val result: Deferred<Bitmap?> = lifecycleScope.async(Dispatchers.IO) {
             urlImage.toBitmap
@@ -323,9 +321,9 @@ class MainActivity : AppCompatActivity() {
 //оппеделяем координаты и выводим данные ->
     @SuppressLint("MissingPermission")
     private fun getlocations(state:String) {
-        val key: String = "5f05959757851e75b4bc0e978af14c8e"
-        var urlTodayandOther: String = ""
-        var url_current: String = ""
+        val key = "5f05959757851e75b4bc0e978af14c8e"
+        var urlTodayandOther: String
+        var url_current: String
 
         fusedLocationProviderClient.lastLocation.addOnSuccessListener {
 
@@ -334,21 +332,21 @@ class MainActivity : AppCompatActivity() {
             } else it.apply {
 //если выбран какой-то город из списка, то получаем координаты города выбранного ранее (getnewcity())
                 if (state != "current"){
-                    var newlatlng = getnewcity()
+                    val newlatlng = getnewcity()
                         latitude = newlatlng.substring(newlatlng.indexOf("(")+1,newlatlng.indexOf(",")).toDouble()
                         longitude = newlatlng.substring(newlatlng.indexOf(",")+1,newlatlng.indexOf(")")).toDouble()
 
-                        Log.d("Message1", state+" "+ latitude+" "+longitude)
+                        Log.d("Message1", "$state $latitude $longitude")
                         urlTodayandOther = "https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&exclude=current,minutely,alerts&units=metric&lang=en&appid=$key"
                         url_current = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$key&units=metric&lang=en"
 
                 }
 //если город не выбирался через список то используем координаты текущего местоположения
                 else {
-                    var latitude = it.latitude.toString()
-                    var longitude = it.longitude.toString()
+                    val latitude = it.latitude.toString()
+                    val longitude = it.longitude.toString()
 
-                        Log.d("Message2", state+" "+ latitude+" "+longitude)
+                        Log.d("Message2", "$state $latitude $longitude")
                         urlTodayandOther = "https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&exclude=current,minutely,alerts&units=metric&lang=en&appid=$key"
                         url_current = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$key&units=metric&lang=en"
                 }
@@ -367,20 +365,20 @@ class MainActivity : AppCompatActivity() {
 
                         val main = JSONObject(apiResponse).getJSONObject("main")
 
-                        val round_curr_temp = Math.round(main.getDouble("temp"))
-                        val round_min_temp = Math.round(main.getDouble("temp_min"))
-                        val round_max_temp = Math.round(main.getDouble("temp_max"))
+                        val round_curr_temp = main.getDouble("temp").roundToInt()
+                        val round_min_temp = main.getDouble("temp_min").roundToInt()
+                        val round_max_temp = main.getDouble("temp_max").roundToInt()
 
                         curr_date?.text = substring(Date().toString(),0,16)
-                        curr_temp?.text = round_curr_temp.toString() + "℃"
-                        min_temp?.text =round_min_temp.toString()+"° min"
-                        max_temp?.text =round_max_temp.toString()+"° max"
+                        curr_temp?.text = "$round_curr_temp℃"
+                        min_temp?.text = "$round_min_temp° min"
+                        max_temp?.text = "$round_max_temp° max"
                         atmo_press?.text =main.getString("pressure")+" hPa"
                         humidity?.text =main.getString("humidity")+" %"
 
                         val wind = JSONObject(apiResponse).getJSONObject("wind")
-                        val round_wind_speed =Math.round(wind.getDouble("speed"))
-                        wind_speed?.text =round_wind_speed.toString()+" m/s"
+                        val round_wind_speed = wind.getDouble("speed").roundToInt()
+                        wind_speed?.text = "$round_wind_speed m/s"
 
                         curr_city?.text = JSONObject(apiResponse).getString("name")
 
@@ -404,8 +402,8 @@ class MainActivity : AppCompatActivity() {
                         var i = 0
                         while(i < 12){
                             val date_time = hourly.getJSONObject(i).getString("dt").toLong()
-                            val round_hourly_temp = Math.round(hourly.getJSONObject(i).getDouble("temp"))
-                            hours_temperature[i][j] = substring(getDateTimeFromEpocLongOfSeconds(date_time).toString(),11,16)
+                            val round_hourly_temp = hourly.getJSONObject(i).getDouble("temp").roundToInt()
+                            hours_temperature[i][j] = substring(getDateTimeFromEpocLongOfSeconds(date_time),11,16)
                             //Log.d("Message", hours_temperature[i][j])
                             j=1
                             hours_temperature[i][j] =round_hourly_temp.toString()
@@ -465,31 +463,31 @@ class MainActivity : AppCompatActivity() {
                         }
 
 
-                        day1_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(1).getString("dt").toLong()).toString(),0,10)
+                        day1_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(1).getString("dt").toLong()),0,10)
                         day1_mintemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("min").toDouble()).toString()+C
                         day1_maxtemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("max").toDouble()).toString()+C
 
-                        day2_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(2).getString("dt").toLong()).toString(),0,10)
+                        day2_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(2).getString("dt").toLong()),0,10)
                         day2_mintemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("min").toDouble()).toString()+C
                         day2_maxtemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("max").toDouble()).toString()+C
 
-                        day3_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(3).getString("dt").toLong()).toString(),0,10)
+                        day3_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(3).getString("dt").toLong()),0,10)
                         day3_mintemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("min").toDouble()).toString()+C
                         day3_maxtemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("max").toDouble()).toString()+C
 
-                        day4_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(4).getString("dt").toLong()).toString(),0,10)
+                        day4_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(4).getString("dt").toLong()),0,10)
                         day4_mintemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("min").toDouble()).toString()+C
                         day4_maxtemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("max").toDouble()).toString()+C
 
-                        day5_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(5).getString("dt").toLong()).toString(),0,10)
+                        day5_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(5).getString("dt").toLong()),0,10)
                         day5_mintemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("min").toDouble()).toString()+C
                         day5_maxtemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("max").toDouble()).toString()+C
 
-                        day6_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(6).getString("dt").toLong()).toString(),0,10)
+                        day6_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(6).getString("dt").toLong()),0,10)
                         day6_mintemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("min").toDouble()).toString()+C
                         day6_maxtemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("max").toDouble()).toString()+C
 
-                        day7_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(7).getString("dt").toLong()).toString(),0,10)
+                        day7_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(7).getString("dt").toLong()),0,10)
                         day7_mintemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("min").toDouble()).toString()+C
                         day7_maxtemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("max").toDouble()).toString()+C
                       //Log.d("Message", date_time_days)
