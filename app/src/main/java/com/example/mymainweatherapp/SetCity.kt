@@ -30,7 +30,7 @@ class SetCity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
                     as AutocompleteSupportFragment
 
-        // Specify the types of place data to return.
+        // Определяем данные которые необходимо получить
         autocompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
 
         // Listen to place selection events
@@ -40,11 +40,6 @@ class SetCity : AppCompatActivity() {
                 when (event) {
                     is PlaceSelectionSuccess -> latlng = event.place.latLng.toString()
 
-                        /*Toast.makeText(
-                        this@SetCity,
-                        "Got place '${event.place.latLng}'",
-                        Toast.LENGTH_SHORT
-                    ).show()*/
                     is PlaceSelectionError -> Toast.makeText(
                         this@SetCity,
                         "Failed to get place '${event.status.statusMessage}'",
@@ -55,7 +50,7 @@ class SetCity : AppCompatActivity() {
 
                 val intent = Intent(this@SetCity,MainActivity::class.java)
                 intent.putExtra("latlng", latlng)
-                Log.d("set11111", latlng)
+                Log.d("lat and lng", latlng)
                 startActivity(intent)
             }
         }
