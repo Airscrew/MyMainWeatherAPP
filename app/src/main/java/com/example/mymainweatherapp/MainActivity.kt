@@ -6,8 +6,11 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.text.TextUtils.substring
 import android.widget.TextView
 import org.jetbrains.anko.doAsync
@@ -91,6 +94,21 @@ class MainActivity : AppCompatActivity() {
     private var day5_tview: TextView? = null
     private var day6_tview: TextView? = null
     private var day7_tview: TextView? = null
+
+    private var wind_deg_image1: ImageView? = null
+    private var wind_deg_image2: ImageView? = null
+    private var wind_deg_image3: ImageView? = null
+    private var wind_deg_image4: ImageView? = null
+    private var wind_deg_image5: ImageView? = null
+    private var wind_deg_image6: ImageView? = null
+    private var wind_deg_image7: ImageView? = null
+    private var wind_deg_image8: ImageView? = null
+    private var wind_deg_image9: ImageView? = null
+    private var wind_deg_image10: ImageView? = null
+    private var wind_deg_image11: ImageView? = null
+    private var wind_deg_image12: ImageView? = null
+
+
 
     private var day1_mintemp: TextView? = null
     private var day2_mintemp: TextView? = null
@@ -218,6 +236,22 @@ class MainActivity : AppCompatActivity() {
         day6_tview = findViewById(R.id.day6_tview)
         day7_tview = findViewById(R.id.day7_tview)
 
+
+        wind_deg_image1 = findViewById(R.id.wind_deg_image1)
+        wind_deg_image2 = findViewById(R.id.wind_deg_image2)
+        wind_deg_image3 = findViewById(R.id.wind_deg_image3)
+        wind_deg_image4 = findViewById(R.id.wind_deg_image4)
+        wind_deg_image5 = findViewById(R.id.wind_deg_image5)
+        wind_deg_image6 = findViewById(R.id.wind_deg_image6)
+        wind_deg_image7 = findViewById(R.id.wind_deg_image7)
+        wind_deg_image8 = findViewById(R.id.wind_deg_image8)
+        wind_deg_image9 = findViewById(R.id.wind_deg_image9)
+        wind_deg_image10 = findViewById(R.id.wind_deg_image10)
+        wind_deg_image11 = findViewById(R.id.wind_deg_image11)
+        wind_deg_image12 = findViewById(R.id.wind_deg_image12)
+
+
+
         day1_mintemp = findViewById(R.id.day1_mintemp)
         day2_mintemp = findViewById(R.id.day2_mintemp)
         day3_mintemp = findViewById(R.id.day3_mintemp)
@@ -318,7 +352,70 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//оппеделяем координаты и выводим данные ->
+    //закгрузка соответствующих погодных иконок направление ветра
+    private fun setimage_wind_deg(wind_deg: Double, i: Int) {
+
+       // var wind_deg_icon: String = ""
+        var uri: Uri? = null
+
+        if((wind_deg > 337.5)||( wind_deg <= 22.5)){
+            //wind_deg_icon = "R.drawable.n"
+            uri = Uri.parse("android.resource://$packageName/${R.drawable.n}")
+
+        } else  if ((wind_deg > 22.5)&&(wind_deg <= 67.5)) {
+         //   wind_deg_icon = "R.drawable.ne"
+            uri = Uri.parse("android.resource://$packageName/${R.drawable.ne}")
+        } else if ((wind_deg > 67.5)&&(wind_deg <= 112.5)){
+          //  wind_deg_icon = "R.drawable.e"
+            uri = Uri.parse("android.resource://$packageName/${R.drawable.e}")
+        }else if ((wind_deg > 112.5)&&(wind_deg <= 157.5)){
+           // wind_deg_icon = "R.drawable.se"
+            uri = Uri.parse("android.resource://$packageName/${R.drawable.se}")
+        } else if ((wind_deg > 157.5)&&(wind_deg <= 202.5)){
+           // wind_deg_icon = "R.drawable.s"
+            uri = Uri.parse("android.resource://$packageName/${R.drawable.s}")
+        } else if ((wind_deg > 202.5)&&(wind_deg <= 247.5)){
+           // wind_deg_icon = "R.drawable.sw"
+            uri = Uri.parse("android.resource://$packageName/${R.drawable.sw}")
+        } else if ((wind_deg > 247.5)&&(wind_deg <= 292.5)){
+           // wind_deg_icon = "R.drawable.w"
+            uri = Uri.parse("android.resource://$packageName/${R.drawable.w}")
+        } else if ((wind_deg > 292.5)&&(wind_deg <= 337.5)){
+           // wind_deg_icon = "R.drawable.nw"
+            uri = Uri.parse("android.resource://$packageName/${R.drawable.nw}")
+        }
+
+
+           //  wind_deg_image1?.setImageURI(uri)
+
+       // wind_deg_image1?.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.n))
+        if (i==0){ wind_deg_image1?.setImageURI(uri)}
+        if (i==1){ wind_deg_image2?.setImageURI(uri)}
+        if (i==2){ wind_deg_image3?.setImageURI(uri)}
+        if (i==3){ wind_deg_image4?.setImageURI(uri)}
+        if (i==4){ wind_deg_image5?.setImageURI(uri)}
+        if (i==5){ wind_deg_image6?.setImageURI(uri)}
+        if (i==6){ wind_deg_image7?.setImageURI(uri)}
+        if (i==7){ wind_deg_image8?.setImageURI(uri)}
+        if (i==8){ wind_deg_image9?.setImageURI(uri)}
+        if (i==9){ wind_deg_image10?.setImageURI(uri)}
+        if (i==10){ wind_deg_image11?.setImageURI(uri)}
+        if (i==11){ wind_deg_image12?.setImageURI(uri)}
+
+
+
+       // wind_deg_image1?.setImageResource(R.drawable.n);
+       // Environment.getExternalStorageDirectory().path
+       // Log.d("Message1 path", uri.toString())
+       // wind_deg_image1?.setImageDrawable(Drawable.createFromPath("/mnt/sdcard/cat.jpg"))
+
+    }
+
+
+
+
+
+    //оппеделяем координаты и выводим данные ->
     @SuppressLint("MissingPermission")
     private fun getlocations(state:String) {
         val key = "5f05959757851e75b4bc0e978af14c8e"
@@ -388,9 +485,14 @@ class MainActivity : AppCompatActivity() {
                         val hourly = JSONObject(apiResponceTodayandOther).getJSONArray("hourly")
                         var k = 0
                         var hourly_weather_ico_code : String
+                        var wind_deg : Double
                         while(k<12) {
                             hourly_weather_ico_code = hourly.getJSONObject(k).getJSONArray("weather").getJSONObject(0).getString("icon")
                             setimage_hourly(hourly_weather_ico_code, k)
+                            wind_deg = hourly.getJSONObject(k).getString("wind_deg").toDouble()
+                            setimage_wind_deg(wind_deg, k)
+                            //Log.d("Message wind-deg", wind_deg.toString())
+
                             k++
                         }
 
@@ -411,6 +513,11 @@ class MainActivity : AppCompatActivity() {
                             j=0
                             i++
                         }
+
+
+
+
+
 
                         timerow1?.text = hours_temperature [0][0]
                         temprow1?.text = hours_temperature [0][1]+C
