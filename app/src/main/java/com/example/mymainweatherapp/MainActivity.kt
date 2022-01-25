@@ -355,40 +355,28 @@ class MainActivity : AppCompatActivity() {
     //закгрузка соответствующих погодных иконок направление ветра
     private fun setimage_wind_deg(wind_deg: Double, i: Int) {
 
-       // var wind_deg_icon: String = ""
+
         var uri: Uri? = null
 
         if((wind_deg > 337.5)||( wind_deg <= 22.5)){
-            //wind_deg_icon = "R.drawable.n"
             uri = Uri.parse("android.resource://$packageName/${R.drawable.n}")
-
         } else  if ((wind_deg > 22.5)&&(wind_deg <= 67.5)) {
-         //   wind_deg_icon = "R.drawable.ne"
             uri = Uri.parse("android.resource://$packageName/${R.drawable.ne}")
         } else if ((wind_deg > 67.5)&&(wind_deg <= 112.5)){
-          //  wind_deg_icon = "R.drawable.e"
             uri = Uri.parse("android.resource://$packageName/${R.drawable.e}")
         }else if ((wind_deg > 112.5)&&(wind_deg <= 157.5)){
-           // wind_deg_icon = "R.drawable.se"
             uri = Uri.parse("android.resource://$packageName/${R.drawable.se}")
         } else if ((wind_deg > 157.5)&&(wind_deg <= 202.5)){
-           // wind_deg_icon = "R.drawable.s"
             uri = Uri.parse("android.resource://$packageName/${R.drawable.s}")
         } else if ((wind_deg > 202.5)&&(wind_deg <= 247.5)){
-           // wind_deg_icon = "R.drawable.sw"
             uri = Uri.parse("android.resource://$packageName/${R.drawable.sw}")
         } else if ((wind_deg > 247.5)&&(wind_deg <= 292.5)){
-           // wind_deg_icon = "R.drawable.w"
             uri = Uri.parse("android.resource://$packageName/${R.drawable.w}")
         } else if ((wind_deg > 292.5)&&(wind_deg <= 337.5)){
-           // wind_deg_icon = "R.drawable.nw"
             uri = Uri.parse("android.resource://$packageName/${R.drawable.nw}")
         }
 
 
-           //  wind_deg_image1?.setImageURI(uri)
-
-       // wind_deg_image1?.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.n))
         if (i==0){ wind_deg_image1?.setImageURI(uri)}
         if (i==1){ wind_deg_image2?.setImageURI(uri)}
         if (i==2){ wind_deg_image3?.setImageURI(uri)}
@@ -401,13 +389,6 @@ class MainActivity : AppCompatActivity() {
         if (i==9){ wind_deg_image10?.setImageURI(uri)}
         if (i==10){ wind_deg_image11?.setImageURI(uri)}
         if (i==11){ wind_deg_image12?.setImageURI(uri)}
-
-
-
-       // wind_deg_image1?.setImageResource(R.drawable.n);
-       // Environment.getExternalStorageDirectory().path
-       // Log.d("Message1 path", uri.toString())
-       // wind_deg_image1?.setImageDrawable(Drawable.createFromPath("/mnt/sdcard/cat.jpg"))
 
     }
 
@@ -571,32 +552,32 @@ class MainActivity : AppCompatActivity() {
 
 
                         day1_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(1).getString("dt").toLong()),0,10)
-                        day1_mintemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("min").toDouble()).toString()+C
-                        day1_maxtemp?.text = Math.round(daily.getJSONObject(1).getJSONObject("temp").getString("max").toDouble()).toString()+C
+                        day1_mintemp?.text = daily.getJSONObject(1).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                        day1_maxtemp?.text = daily.getJSONObject(1).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
 
                         day2_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(2).getString("dt").toLong()),0,10)
-                        day2_mintemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("min").toDouble()).toString()+C
-                        day2_maxtemp?.text = Math.round(daily.getJSONObject(2).getJSONObject("temp").getString("max").toDouble()).toString()+C
+                        day2_mintemp?.text = daily.getJSONObject(2).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                        day2_maxtemp?.text = daily.getJSONObject(2).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
 
                         day3_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(3).getString("dt").toLong()),0,10)
-                        day3_mintemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("min").toDouble()).toString()+C
-                        day3_maxtemp?.text = Math.round(daily.getJSONObject(3).getJSONObject("temp").getString("max").toDouble()).toString()+C
+                        day3_mintemp?.text = daily.getJSONObject(3).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                        day3_maxtemp?.text = daily.getJSONObject(3).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
 
                         day4_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(4).getString("dt").toLong()),0,10)
-                        day4_mintemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("min").toDouble()).toString()+C
-                        day4_maxtemp?.text = Math.round(daily.getJSONObject(4).getJSONObject("temp").getString("max").toDouble()).toString()+C
+                        day4_mintemp?.text = daily.getJSONObject(4).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                        day4_maxtemp?.text = daily.getJSONObject(4).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
 
                         day5_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(5).getString("dt").toLong()),0,10)
-                        day5_mintemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("min").toDouble()).toString()+C
-                        day5_maxtemp?.text = Math.round(daily.getJSONObject(5).getJSONObject("temp").getString("max").toDouble()).toString()+C
+                        day5_mintemp?.text = daily.getJSONObject(5).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                        day5_maxtemp?.text = daily.getJSONObject(5).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
 
                         day6_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(6).getString("dt").toLong()),0,10)
-                        day6_mintemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("min").toDouble()).toString()+C
-                        day6_maxtemp?.text = Math.round(daily.getJSONObject(6).getJSONObject("temp").getString("max").toDouble()).toString()+C
+                        day6_mintemp?.text = daily.getJSONObject(6).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                        day6_maxtemp?.text = daily.getJSONObject(6).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
 
                         day7_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(7).getString("dt").toLong()),0,10)
-                        day7_mintemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("min").toDouble()).toString()+C
-                        day7_maxtemp?.text = Math.round(daily.getJSONObject(7).getJSONObject("temp").getString("max").toDouble()).toString()+C
+                        day7_mintemp?.text = daily.getJSONObject(7).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                        day7_maxtemp?.text = daily.getJSONObject(7).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
                       //Log.d("Message", date_time_days)
                        // Log.d("Message", daily_temp_min.toString())
                        // Log.d("Message", daily_temp_max.toString())

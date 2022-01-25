@@ -368,9 +368,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image1"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
-                                 />
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp" />
 
                             <TextView
                                 android:id="@+id/temprow1"
@@ -390,8 +391,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image2"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                 />
 
                             <TextView
@@ -411,8 +414,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image3"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -433,8 +438,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image4"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -454,8 +461,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image5"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -475,8 +484,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image6"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -496,8 +507,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image7"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -517,8 +530,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image8"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -538,8 +553,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image9"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -559,8 +576,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image10"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -580,8 +599,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image11"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
@@ -601,8 +622,10 @@
 
                             <ImageView
                                 android:id="@+id/wind_deg_image12"
-                                android:layout_width="40sp"
+                                android:layout_width="20sp"
                                 android:layout_height="match_parent"
+                                android:paddingEnd="5sp"
+                                android:paddingBottom="5sp"
                                  />
 
                             <TextView
