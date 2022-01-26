@@ -403,10 +403,185 @@ class MainActivity : AppCompatActivity() {
         var urlTodayandOther: String
         var url_current: String
 
+        if (state == "new_location") {
+            val newlatlng = getnewcity()
+            var latitude =
+                newlatlng.substring(newlatlng.indexOf("(") + 1, newlatlng.indexOf(",")).toDouble()
+            var longitude =
+                newlatlng.substring(newlatlng.indexOf(",") + 1, newlatlng.indexOf(")")).toDouble()
+
+            Log.d("Message1", "$state $latitude $longitude")
+            urlTodayandOther = "https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&exclude=current,minutely,alerts&units=metric&lang=en&appid=$key"
+            url_current = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$key&units=metric&lang=en"
+
+            doAsync {
+                val apiResponse = URL(url_current).readText()
+                val apiResponceTodayandOther = URL(urlTodayandOther).readText()
+                Log.d("Message", apiResponse)
+                Log.d("Message", apiResponceTodayandOther)
+
+
+                runOnUiThread {
+
+                    /*------------current----------*/
+
+                    val main = JSONObject(apiResponse).getJSONObject("main")
+
+                    val round_curr_temp = main.getDouble("temp").roundToInt()
+                    val round_min_temp = main.getDouble("temp_min").roundToInt()
+                    val round_max_temp = main.getDouble("temp_max").roundToInt()
+
+                    curr_date?.text = substring(Date().toString(),0,16)
+                    curr_temp?.text = "$round_curr_temp℃"
+                    min_temp?.text = "$round_min_temp° min"
+                    max_temp?.text = "$round_max_temp° max"
+                    atmo_press?.text =main.getString("pressure")+" hPa"
+                    humidity?.text =main.getString("humidity")+" %"
+
+                    val wind = JSONObject(apiResponse).getJSONObject("wind")
+                    val round_wind_speed = wind.getDouble("speed").roundToInt()
+                    wind_speed?.text = "$round_wind_speed m/s"
+
+                    curr_city?.text = JSONObject(apiResponse).getString("name")
+
+
+                    /*------------hourly----------*/
+
+                    val hourly = JSONObject(apiResponceTodayandOther).getJSONArray("hourly")
+                    var k = 0
+                    var hourly_weather_ico_code : String
+                    var wind_deg : Double
+                    while(k<12) {
+                        hourly_weather_ico_code = hourly.getJSONObject(k).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage_hourly(hourly_weather_ico_code, k)
+                        wind_deg = hourly.getJSONObject(k).getString("wind_deg").toDouble()
+                        setimage_wind_deg(wind_deg, k)
+                        //Log.d("Message wind-deg", wind_deg.toString())
+
+                        k++
+                    }
+
+                    //Log.d("Message2", hourly_weather_ico_code)
+
+                    val hours_temperature : Array<Array<String>> = Array(12, { Array(2, {""}) })
+
+                    var j = 0
+                    var i = 0
+                    while(i < 12){
+                        val date_time = hourly.getJSONObject(i).getString("dt").toLong()
+                        val round_hourly_temp = hourly.getJSONObject(i).getDouble("temp").roundToInt()
+                        hours_temperature[i][j] = substring(getDateTimeFromEpocLongOfSeconds(date_time),11,16)
+                        //Log.d("Message", hours_temperature[i][j])
+                        j=1
+                        hours_temperature[i][j] =round_hourly_temp.toString()
+                        //Log.d("Message", hours_temperature[i][j])
+                        j=0
+                        i++
+                    }
+
+
+
+
+
+
+                    timerow1?.text = hours_temperature [0][0]
+                    temprow1?.text = hours_temperature [0][1]+C
+
+                    timerow2?.text = hours_temperature [1][0]
+                    temprow2?.text = hours_temperature [1][1]+C
+
+                    timerow3?.text = hours_temperature [2][0]
+                    temprow3?.text = hours_temperature [2][1]+C
+
+                    timerow4?.text = hours_temperature [3][0]
+                    temprow4?.text = hours_temperature [3][1]+C
+
+                    timerow5?.text = hours_temperature [4][0]
+                    temprow5?.text = hours_temperature [4][1]+C
+
+                    timerow6?.text = hours_temperature [5][0]
+                    temprow6?.text = hours_temperature [5][1]+C
+
+                    timerow7?.text = hours_temperature [6][0]
+                    temprow7?.text = hours_temperature [6][1]+C
+
+                    timerow8?.text = hours_temperature [7][0]
+                    temprow8?.text = hours_temperature [7][1]+C
+
+                    timerow9?.text = hours_temperature [8][0]
+                    temprow9?.text = hours_temperature [8][1]+C
+
+                    timerow10?.text = hours_temperature [9][0]
+                    temprow10?.text = hours_temperature [9][1]+C
+
+                    timerow11?.text = hours_temperature [10][0]
+                    temprow11?.text = hours_temperature [10][1]+C
+
+                    timerow12?.text = hours_temperature [11][0]
+                    temprow12?.text = hours_temperature [11][1]+C
+
+
+
+                    /*-----------daily-----------*/
+
+                    val daily = JSONObject(apiResponceTodayandOther).getJSONArray("daily")
+
+                    var n = 1
+                    var weather_ico_code_array : String
+                    while(n<8) {
+                        weather_ico_code_array = daily.getJSONObject(n).getJSONArray("weather").getJSONObject(0).getString("icon")
+                        setimage_daily(weather_ico_code_array, n)
+                        n++
+                    }
+
+
+                    day1_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(1).getString("dt").toLong()),0,10)
+                    day1_mintemp?.text = daily.getJSONObject(1).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                    day1_maxtemp?.text = daily.getJSONObject(1).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
+
+                    day2_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(2).getString("dt").toLong()),0,10)
+                    day2_mintemp?.text = daily.getJSONObject(2).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                    day2_maxtemp?.text = daily.getJSONObject(2).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
+
+                    day3_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(3).getString("dt").toLong()),0,10)
+                    day3_mintemp?.text = daily.getJSONObject(3).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                    day3_maxtemp?.text = daily.getJSONObject(3).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
+
+                    day4_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(4).getString("dt").toLong()),0,10)
+                    day4_mintemp?.text = daily.getJSONObject(4).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                    day4_maxtemp?.text = daily.getJSONObject(4).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
+
+                    day5_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(5).getString("dt").toLong()),0,10)
+                    day5_mintemp?.text = daily.getJSONObject(5).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                    day5_maxtemp?.text = daily.getJSONObject(5).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
+
+                    day6_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(6).getString("dt").toLong()),0,10)
+                    day6_mintemp?.text = daily.getJSONObject(6).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                    day6_maxtemp?.text = daily.getJSONObject(6).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
+
+                    day7_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(7).getString("dt").toLong()),0,10)
+                    day7_mintemp?.text = daily.getJSONObject(7).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
+                    day7_maxtemp?.text = daily.getJSONObject(7).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
+
+                }
+            }
+
+
+
+
+
+
+            return
+        }
+
         fusedLocationProviderClient.lastLocation.addOnSuccessListener {
 
+
             if (it == null){
+                val intent = Intent(this, SetCity::class.java)
+                startActivity(intent)
                 Toast.makeText(this,"Невозможно определить геопозицию", Toast.LENGTH_SHORT).show()
+
             } else it.apply {
 //если выбран какой-то город из списка, то получаем координаты города выбранного ранее (getnewcity())
                 if (state != "current"){
@@ -578,12 +753,7 @@ class MainActivity : AppCompatActivity() {
                         day7_tview?.text = substring(getDateTimeFromEpocLongOfSeconds(daily.getJSONObject(7).getString("dt").toLong()),0,10)
                         day7_mintemp?.text = daily.getJSONObject(7).getJSONObject("temp").getDouble("min").roundToInt().toString()+C
                         day7_maxtemp?.text = daily.getJSONObject(7).getJSONObject("temp").getDouble("max").roundToInt().toString()+C
-                      //Log.d("Message", date_time_days)
-                       // Log.d("Message", daily_temp_min.toString())
-                       // Log.d("Message", daily_temp_max.toString())
-                       // timerow1?.text = substring(getDateTimeFromEpocLongOfSeconds(date_time).toString(),11,16)
-                      //  temprow1?.text = round_hourly_temp.toString()
-                       // Log.d("Message", substring(getDateTimeFromEpocLongOfSeconds(date_time).toString(),11,16))
+
                     }
                 }
             }
